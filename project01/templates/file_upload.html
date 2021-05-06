@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>A simple File Upload</h2></br>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+     	<div class="col-md-8">
+        	<input type="file" name="document" id="csv_file" class="form-control">
+    	</div>
+	</div>
+	<div class="form-group">
+    	<div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px; display: inline">
+        	<button class="btn btn-info">Upload</button>
+          <button class="btn btn-secondary">Download</button>
+    	</div>
+	</div>
+  </form>
+
+  {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-warning alert-dismissable" role="alert">
+            <button class="close" data-dismiss="alert">
+              <small><sup>x</sup></small>
+            </button>
+            {{ message }}
+        </div>
+
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}
